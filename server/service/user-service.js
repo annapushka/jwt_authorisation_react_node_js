@@ -76,6 +76,11 @@ class UserService {
         const users = await UserModel.find()
         return users
     }
+
+    async deleteUsers() {
+        const users = await UserModel.deleteMany()
+        return users
+    }
 }
 
 module.exports = new UserService()

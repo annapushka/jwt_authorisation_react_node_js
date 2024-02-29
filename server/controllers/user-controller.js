@@ -69,6 +69,15 @@ class UserController {
             return next(e)
         }
     }
+
+    async deleteUsers(req, res, next) {
+        try {
+            const user = await userService.deleteUsers()
+            return res.json(user)
+        } catch (e) {
+            return next(e)
+        }
+    }
 }
 
 module.exports = new UserController();
