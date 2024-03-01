@@ -35,15 +35,16 @@ function App() {
   return (
     <div className="App" style={{display: 'flex', gap: 8, flexDirection: 'column', width: 300, margin: 'auto'}}>
       <h1>{store.isAuth ? `User authorised ${store.user.email}` : "Please identify yourselves"}</h1>
+      <h1>{store.user.isActivated ? 'Account confirmed by mail' : 'Please confirm the account by e-mail' }</h1>
       <button onClick={() => store.logout()}>Logout</button>
 
         <button onClick={getUsers}>Get user list</button>
-        <div>
-          {users.length} users
-        </div> 
-        <div>
+        {users.length > 0 && (
+        <>
+            {users.length} users
             {users.map(user => <div key={user.id}>{user.email}</div>)}
-        </div>
+        </>
+        )}
     </div>
   );
 }
